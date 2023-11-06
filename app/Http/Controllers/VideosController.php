@@ -63,6 +63,7 @@ public function update(Request $request, $id)
 public function destroy($id)
     {
         $video = Videos::find($id);
+
         if (!$video) {
             return response()->json(['error' => 'Video not found'], 404);
         }
