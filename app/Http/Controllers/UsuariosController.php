@@ -28,13 +28,13 @@ class UsuariosController{
     $email = $request->input('email');
 
     if (strlen($email) < 6) {
-        return response()->json(['error' => 'O email deve ter no mínimo 6 caracteres'], 400);
+        return response()->json(['error' => 'The email must have at least 6 characters'], 400);
     }
 
     $user = Usuarios::where('email', $email)->first();
 
     if ($user) {
-        return response()->json(['error' => 'O email já está em uso'], 400);
+        return response()->json(['error' => 'Email is already in use'], 400);
     }
 
     $user = new Usuarios();
@@ -57,7 +57,7 @@ class UsuariosController{
     $user->password = bcrypt($request->input('password'));
     $user->save();
 
-    return response()->json(['Success' => 'Usuario Atualizado'],201);
+    return response()->json(['Success' => 'Updated User'],201);
   }
 
   public function destroy($id)

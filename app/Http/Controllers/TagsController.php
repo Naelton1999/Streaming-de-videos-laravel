@@ -30,7 +30,7 @@ class TagsController{
     $name = $request->input('name');
 
     if (Tags::where('name', $name)->exists()) {
-        return response()->json(['error' => 'O nome da tag já existe'], 422);
+        return response()->json(['error' => 'Tag name already exists'], 422);
     }
 
     $tag = Tags::create($request->all());
@@ -49,7 +49,7 @@ class TagsController{
 
     $tag->save();
 
-    return response()->json(['Success' => 'Tag Atualizada'], 201);
+    return response()->json(['Success' => 'Updated Tag'], 201);
   }
 
   public function destroy($id)
