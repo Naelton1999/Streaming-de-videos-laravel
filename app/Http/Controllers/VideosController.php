@@ -14,7 +14,7 @@ class VideosController{
     $validTagIds = Tags::whereIn('id', $tagIds)->pluck('id')->all();
 
     if (count($tagIds) !== count($validTagIds)) {
-        return response()->json(['error' => 'ID de tag inválido. Verifique os IDs das tags.'], 400);
+        return response()->json(['error' => 'Invalid tag ID. Check tag IDs.'], 400);
     }
 
     $video = Videos::create($request->only(['name', 'url']));
@@ -50,7 +50,7 @@ public function update(Request $request, $id)
     $validTagIds = Tags::whereIn('id', $tagIds)->pluck('id')->all();
 
     if (count($tagIds) !== count($validTagIds)) {
-        return response()->json(['error' => 'ID de tag inválido. Verifique os IDs das tags.'], 400);
+        return response()->json(['error' => 'Invalid tag ID. Check tag IDs.'], 400);
     }
 
     $video->tags()->sync($validTagIds);
